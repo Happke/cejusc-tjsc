@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOM carregado com sucesso.');
 
-  // Funções definidas no escopo global
   window.mostrar = function(selecao) {
     console.log('Função mostrar chamada com:', selecao);
     const botoesIniciais = document.getElementById('botoesIniciais');
@@ -22,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Estado após alteração - cadastro:', cadastroDiv.style.display);
   };
 
-  // Adicionar eventos aos botões dinamicamente
   const jaCadastradoBtn = document.getElementById('jaCadastrado');
   if (jaCadastradoBtn) {
     jaCadastradoBtn.addEventListener('click', function() {
@@ -395,12 +393,15 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
 
         google.script.run.withSuccessHandler(function(configuracoes) {
+          console.log('Configurações recebidas:', configuracoes);
+          console.log('Perfil do usuário:', res.perfil);
           botoesDisponiveis.forEach(([texto, url, id]) => {
             const botaoConfig = configuracoes[texto];
             let exibirBotao = true;
             if (botaoConfig) {
               exibirBotao = botaoConfig[res.perfil] === true;
             }
+            console.log(`Botão ${texto} será exibido para ${res.perfil}? ${exibirBotao}`);
             if (exibirBotao) {
               const btn = document.createElement('button');
               btn.id = id;
