@@ -1,6 +1,5 @@
 import { google } from 'googleapis';
 import dotenv from 'dotenv';
-
 dotenv.config();
 
 const auth = new google.auth.JWT(
@@ -14,7 +13,7 @@ const sheets = google.sheets({ version: 'v4', auth });
 
 export async function getMetas() {
   const res = await sheets.spreadsheets.values.get({
-    spreadsheetId: process.env.SPREADSHEET_ID,
+    spreadsheetId: process.env.PLANILHA_ID,
     range: 'METAS!A2:C',
   });
 
