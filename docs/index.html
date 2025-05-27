@@ -2,16 +2,35 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Painel Estatístico CEJUSC</title>
+  <title>PAINEL DE ESTATÍSTICAS - PROGRAMA PONTES</title>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>✅ Painel do Programa Pontes</h1>
-  <p>Página publicada com sucesso via GitHub Pages.</p>
+  <header>
+    <h1>PODER JUDICIÁRIO DO ESTADO DE SANTA CATARINA</h1>
+    <h2>CEJUSC ESTADUAL CATARINENSE</h2>
+    <h3>PAINEL DE ESTATÍSTICAS - PROGRAMA PONTES</h3>
+  </header>
 
-  <a href="https://script.google.com/macros/s/AKfycbxcuphhDKNh6if67RXfOy_5AqDsM013SZNkcmi1HX6pNeTRgLzynnRw65HnzPMh-rCXSQ/exec" target="_blank">
-    <button style="padding:10px 20px; font-size:1em; background:#007a33; color:#fff; border:none; border-radius:5px;">
-      Abrir WebApp Google
-    </button>
-  </a>
+  <div id="loadingMessage">Carregando painel...</div>
+
+  <section>
+    <h3>📊 Tabela de Metas</h3>
+    <table id="tabelaMetas">
+      <tr><th>Indicador</th><th>Meta</th><th>Percentual Alcançado</th></tr>
+    </table>
+    <div id="graficoPizza" class="chart"></div>
+  </section>
+
+  <!-- Outros sections omitidos aqui por limitação — veja instruções abaixo -->
+
+  <div class="footer">
+    Powered by Cejusc Estadual Catarinense © JAAH_TJSC 2025
+  </div>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
