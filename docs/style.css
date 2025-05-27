@@ -1,73 +1,99 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #003366;
+/* RESET */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
+
+/* CORPO */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #003366;
+  line-height: 1.6;
+}
+
+/* CABEÇALHO */
 header {
-  text-align: center;
   background-color: #003366;
-  color: #fff;
-  padding: 20px;
-}
-header h1 {
-  margin: 0;
-  font-size: 1.8em;
-}
-header h2 {
-  margin: 0;
-  font-size: 1.4em;
-  color: #fff;
-}
-header h3 {
-  margin: 0;
-  margin-top: 1em;
-  font-size: 1.2em;
-  color: #ffcc00;
-}
-section {
-  max-width: 900px;
-  margin: 30px auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-h3 {
-  color: #007a33;
-  border-bottom: 2px solid #007a33;
-  padding-bottom: 5px;
+  color: white;
   text-align: center;
-  font-size: 1.5em;
+  padding: 1.5rem 1rem;
+  border-bottom: 3px solid #009900;
 }
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+header h2 {
+  font-size: 1.2rem;
+  margin-top: 0.3rem;
+  font-weight: normal;
+}
+
+header h3 {
+  font-size: 1rem;
+  margin-top: 0.6rem;
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+/* PAINEL */
+main {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.painel .card {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #006600;
+}
+
+/* TABELA */
+.tabela-container {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin: 0 auto;
 }
+
 th, td {
-  padding: 12px;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
   text-align: center;
-  border: 1px solid #ddd;
-  font-size: 1.1em;
 }
+
 th {
-  background-color: #007a33;
+  background-color: #003366;
   color: white;
+  font-weight: bold;
 }
-.chart {
-  margin-top: 20px;
-  text-align: center;
+
+tr:nth-child(even) {
+  background-color: #f0f8ff;
 }
-.footer {
+
+/* RODAPÉ */
+footer {
   text-align: center;
-  padding: 15px;
-  font-size: 0.9em;
+  font-size: 0.8rem;
   color: #666;
-}
-#errorMessage {
-  color: red;
-  text-align: center;
-  margin: 10px 0;
+  margin-bottom: 1rem;
 }
