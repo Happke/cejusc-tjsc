@@ -1,12 +1,16 @@
 {
-  "name": "cejusc-painel",
+  "name": "cejusc-tjsc",
   "version": "1.0.0",
-  "description": "Servidor Node para o painel estatístico CEJUSC",
-  "main": "server.js",
+  "description": "Painel estatístico - CEJUSC Estadual TJSC",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "googleapis": "^133.0.0",
+    "cors": "^2.8.5"
   }
 }
