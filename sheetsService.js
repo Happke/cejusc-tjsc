@@ -13,7 +13,7 @@ const sheets = google.sheets({ version: 'v4', auth });
 
 export async function getMetas() {
   const res = await sheets.spreadsheets.values.get({
-    spreadsheetId: process.env.PLANILHA_ID,
+    spreadsheetId: process.env.PAUTAC2_ID,
     range: 'METAS!A2:C',
   });
 
