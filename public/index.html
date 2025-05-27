@@ -1,26 +1,52 @@
-<script>
-  async function carregarPainel() {
-    const res = await fetch('/api/metas');
-    const data = await res.json();
-    preencherTabelaMetas(data);
-  }
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Estatístico CEJUSC</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Painel de Metas do CEJUSC</h1>
 
-  function preencherTabelaMetas(data) {
-    const tabela = document.getElementById('tabelaMetas');
-    if (!data || data.length === 0) {
-      tabela.innerHTML += '<tr><td colspan="3">Nenhum dado disponível</td></tr>';
-      return;
+  <table id="tabelaMetas">
+    <thead>
+      <tr>
+        <th>Gabinete</th>
+        <th>Total de Acordos</th>
+        <th>Percentual</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Os dados serão inseridos aqui via JS -->
+    </tbody>
+  </table>
+
+  <script>
+    async function carregarPainel() {
+      const res = await fetch('/api/metas');
+      const data = await res.json();
+      preencherTabelaMetas(data);
     }
-    data.forEach(item => {
-      const percentual = isNaN(item[2]) ? '0,00%' : (parseFloat(item[2]) * 100).toFixed(2).replace('.', ',') + '%';
-      const linha = `<tr>
-        <td>${item[0]}</td>
-        <td>${Number(item[1]).toLocaleString('pt-BR')}</td>
-        <td>${percentual}</td>
-      </tr>`;
-      tabela.innerHTML += linha;
-    });
-  }
 
-  carregarPainel();
-</script>
+    function preencherTabelaMetas(data) {
+      const tabela = document.getElementById('tabelaMetas').getElementsByTagName('tbody')[0];
+      if (!data || data.length === 0) {
+        tabela.innerHTML += '<tr><td colspan="3">Nenhum dado disponível</td></tr>';
+        return;
+      }
+      data.forEach(item => {
+        const percentual = isNaN(item[2]) ? '0,00%' : (parseFloat(item[2]) * 100).toFixed(2).replace('.', ',') + '%';
+        const linha = `<tr>
+          <td>${item[0]}</td>
+          <td>${Number(item[1]).toLocaleString('pt-BR')}</td>
+          <td>${percentual}</td>
+        </tr>`;
+        tabela.innerHTML += linha;
+      });
+    }
+
+    carregarPainel();
+  </script>
+</body>
+</html>
