@@ -1,0 +1,26 @@
+<script>
+  async function carregarPainel() {
+    const res = await fetch('/api/metas');
+    const data = await res.json();
+    preencherTabelaMetas(data);
+  }
+
+  function preencherTabelaMetas(data) {
+    const tabela = document.getElementById('tabelaMetas');
+    if (!data || data.length === 0) {
+      tabela.innerHTML += '<tr><td colspan="3">Nenhum dado disponível</td></tr>';
+      return;
+    }
+    data.forEach(item => {
+      const percentual = isNaN(item[2]) ? '0,00%' : (parseFloat(item[2]) * 100).toFixed(2).replace('.', ',') + '%';
+      const linha = `<tr>
+        <td>${item[0]}</td>
+        <td>${Number(item[1]).toLocaleString('pt-BR')}</td>
+        <td>${percentual}</td>
+      </tr>`;
+      tabela.innerHTML += linha;
+    });
+  }
+
+  carregarPainel();
+</script>
