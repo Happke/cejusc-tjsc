@@ -1,16 +1,14 @@
 {
   "name": "cejusc-tjsc",
   "version": "1.0.0",
-  "description": "Painel estatístico - CEJUSC Estadual TJSC",
-  "main": "index.js",
-  "type": "module",
+  "description": "Painel Estatístico - Programa Pontes",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "dependencies": {
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.4.1",
     "express": "^4.18.2",
-    "googleapis": "^133.0.0",
-    "cors": "^2.8.5"
+    "googleapis": "^133.0.0"
   }
 }
