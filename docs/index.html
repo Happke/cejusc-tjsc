@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>PAINEL DE ESTATÍSTICAS - PROGRAMA PONTES</title>
-  <script src="https://www.gstatic.com/charts/loader.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de Estatísticas - Programa Pontes</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -15,22 +13,57 @@
     <h3>PAINEL DE ESTATÍSTICAS - PROGRAMA PONTES</h3>
   </header>
 
-  <div id="loadingMessage">Carregando painel...</div>
+  <main>
+    <p>Carregando painel de estatísticas...</p>
 
-  <section>
-    <h3>📊 Tabela de Metas</h3>
-    <table id="tabelaMetas">
-      <tr><th>Indicador</th><th>Meta</th><th>Percentual Alcançado</th></tr>
-    </table>
-    <div id="graficoPizza" class="chart"></div>
-  </section>
+    <section class="painel">
+      <div class="card">
+        <h2><span class="emoji">📊</span> Tabela de Metas</h2>
+        <div id="tabela-metas" class="tabela-container"></div>
+      </div>
+    </section>
+  </main>
 
-  <!-- Outros sections omitidos aqui por limitação — veja instruções abaixo -->
+  <footer>
+    <p>Powered by Cejusc Estadual Catarinense © JAAH_TJSC 2025</p>
+  </footer>
 
-  <div class="footer">
-    Powered by Cejusc Estadual Catarinense © JAAH_TJSC 2025
-  </div>
+  <script>
+    fetch('./data/metas.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro ao carregar dados.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        const container = document.getElementById('tabela-metas');
+        const table = document.createElement('table');
 
-  <script src="scripts.js"></script>
+        const headerRow = document.createElement('tr');
+        Object.keys(data[0]).forEach(key => {
+          const th = document.createElement('th');
+          th.textContent = key;
+          headerRow.appendChild(th);
+        });
+        table.appendChild(headerRow);
+
+        data.forEach(row => {
+          const tr = document.createElement('tr');
+          Object.values(row).forEach(cell => {
+            const td = document.createElement('td');
+            td.textContent = cell;
+            tr.appendChild(td);
+          });
+          table.appendChild(tr);
+        });
+
+        container.innerHTML = '';
+        container.appendChild(table);
+      })
+      .catch(error => {
+        document.getElementById('tabela-metas').textContent = error.message;
+      });
+  </script>
 </body>
 </html>
