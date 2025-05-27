@@ -1,14 +1,15 @@
 {
-  "name": "cejusc-tjsc",
+  "name": "painel-estatistico-cejusc",
   "version": "1.0.0",
-  "description": "Painel Estatístico - Programa Pontes",
+  "description": "Painel de acompanhamento de metas do CEJUSC",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "dotenv": "^16.4.1",
     "express": "^4.18.2",
-    "googleapis": "^133.0.0"
+    "googleapis": "^126.0.1",
+    "dotenv": "^16.3.1"
   }
 }
