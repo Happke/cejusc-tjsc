@@ -24,9 +24,15 @@ async function getValues(sheetId, range) {
 }
 
 async function getMetas() {
-  const dados = await getValues(PLANILHA_ID, 'METAS!A2:C');
-  return dados.filter(row => row[0] && row[1] && row[2] && !isNaN(row[2]));
+  try {
+    const dados = await getValues(PLANILHA_ID, 'METAS!A2:C');
+    return dados.filter(row => row[0] && row[1] && row[2] && !isNaN(row[2]));
+  } catch (error) {
+    console.error('[ERRO getMetas]', error.message, error.stack);
+    throw new Error('Erro ao carregar metas');
+  }
 }
+
 
 async function getMetasInternosExternos() {
   return await getValues(PLANILHA_ID, 'REGISTRO_AUDIÊNCIAS!D1:F2');
